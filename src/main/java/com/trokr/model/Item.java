@@ -39,6 +39,12 @@ public class Item {
 
     @Column(nullable = false)
     private String titulo;
+    
+     @Column(nullable = false)
+    private String nome;
+
+     @Column(nullable = false)
+    private String tipo;
 
     @Column(nullable = false)
     private String descricao;
