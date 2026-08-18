@@ -38,10 +38,16 @@ public class Item {
     private Long id;
 
     @Column(nullable = false)
-    private String titulo;
+    private String nome;
 
     @Column(nullable = false)
     private String descricao;
+
+    @Column(nullable = false)
+    private String tipo;
+
+    @Column(nullable = false)
+    private Usuario usuario;
 
     // Relação unidirecional de propósito: Item conhece seu dono, mas Usuario
     // não mantém uma coleção de itens. Evita decisões de cascade/fetch que
