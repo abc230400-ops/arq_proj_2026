@@ -43,4 +43,12 @@ public class ItemService {
         Item item = buscarPorId(id);
         itemRepository.delete(item);
     }
+
+    public List<Item> buscarPorPeriodoCriacao(LocalDateTime inicio, LocalDateTime fim) {
+        return itemRepository.findByDataCriacaoBetween(inicio, fim);
+    }
+
+    public List<Item> buscarPorNome(String nome) {
+        return itemRepository.findByNome(nome);
+    }
 }
