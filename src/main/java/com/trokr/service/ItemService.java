@@ -4,6 +4,8 @@ import com.trokr.exception.ResourceNotFoundException;
 import com.trokr.model.Item;
 import com.trokr.model.Usuario;
 import com.trokr.repository.ItemRepository;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -44,11 +46,7 @@ public class ItemService {
         itemRepository.delete(item);
     }
 
-    public List<Item> buscarPorPeriodoCriacao(LocalDateTime inicio, LocalDateTime fim) {
+    public List<Item> findByDataCriacaoBetween(LocalDateTime inicio, LocalDateTime fim){
         return itemRepository.findByDataCriacaoBetween(inicio, fim);
-    }
-
-    public List<Item> buscarPorNome(String nome) {
-        return itemRepository.findByNome(nome);
     }
 }
