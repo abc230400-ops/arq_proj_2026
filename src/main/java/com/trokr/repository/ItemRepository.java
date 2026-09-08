@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
- List<Item> findByDataCriacaoBetween(LocalDateTime inicio, LocalDateTime fim);
- List<Item> findByNome(String nome);
+    List<Item> findByTituloContainingIgnoreCase(String titulo);
+    List<Item> findByTipoIgnoreCase(String tipo);
+    List<Item> findByUsuarioProprietarioId(Long usuarioId);
  
 }

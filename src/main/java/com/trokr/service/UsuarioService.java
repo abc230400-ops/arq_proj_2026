@@ -43,4 +43,9 @@ public class UsuarioService {
     public List<Usuario> buscarPorNomeOuId(String nome, Long id) {
         return usuarioRepository.findByNomeOrId(nome, id);
     }
+
+    public Usuario buscarPorEmail(String email) {
+        return usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado com email: " + email));
+    }
 }

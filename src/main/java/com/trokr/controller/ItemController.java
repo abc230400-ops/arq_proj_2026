@@ -59,8 +59,28 @@ public class ItemController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@PathVariable Long id) {
         itemService.remover(id);
-
-        
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/buscar")
+    public List<ItemResponseDTO> listarPorTitulo(@RequestParam("titulo") String titulo){
+        return itemService.listarPorTitulo(titulo).stream()
+                .map(ItemResponseDTO::fromEntity)
+                .toList();
+    }
+
+    @GetMapping("/buscar-tipo")
+    public List<ItemResponseDTO> listarPorTipo(@RequestParam("tipo") String tipo){
+        return itemService.listarPorTipo(tipo).stream()
+                .map(ItemResponseDTO::fromEntity)
+                .toList();
+    }
+
+    @GetMapping("/buscar-itens-usuario/{id}")
+    public List<ItemResponseDTO> listarPorProprietario(@PathVariable Long id){
+        return itemService.listarPorUsuarioProprietario(id).stream()
+                .map(ItemResponseDTO::fromEntity)
+                .toList();
+    }
+     
 }

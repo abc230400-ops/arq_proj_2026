@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 // repositório por cima — não há necessidade disso ainda.
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-    List<Usuario> findByNomeOrId(String nome, long id);
-    Boolean existsByEmail(String email);
+    Optional<Usuario> findByEmail(String email);
+    List<Usuario> findByNomeContainingIgnoreCase(String nome);
 
 }

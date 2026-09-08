@@ -46,7 +46,13 @@ public class ItemService {
         itemRepository.delete(item);
     }
 
-    public List<Item> findByDataCriacaoBetween(LocalDateTime inicio, LocalDateTime fim){
-        return itemRepository.findByDataCriacaoBetween(inicio, fim);
+   public List<Item> listarPorTitulo(String titulo) {
+        return itemRepository.findByTituloContainingIgnoreCase(titulo);
+    }
+    public List<Item> listarPorTipo(String tipo) {
+        return itemRepository.findByTipoIgnoreCase(tipo);
+    }
+    public List<Item> listarPorUsuarioProprietario(Long usuarioId) {
+        return itemRepository.findByUsuarioProprietarioId(usuarioId);
     }
 }

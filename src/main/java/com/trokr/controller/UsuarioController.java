@@ -61,4 +61,16 @@ public class UsuarioController {
         usuarioService.remover(id);
         return ResponseEntity.noContent().build();
     }
+
+     @GetMapping("/buscar")
+    public UsuarioResponseDTO buscarPorEmail(@RequestParam("email") String email) {
+        return UsuarioResponseDTO.fromEntity(usuarioService.buscarPorEmail(email));
+    }
+
+    @GetMapping("/buscar-nome")
+    public List<UsuarioResponseDTO> buscarPorNome(@RequestParam("nome") String nome) {
+        return usuarioService.listarPorNome(nome).stream()
+                .map(UsuarioResponseDTO::fromEntity)
+                .toList();
+    }
 }
