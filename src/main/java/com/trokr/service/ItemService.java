@@ -5,7 +5,6 @@ import com.trokr.model.Item;
 import com.trokr.model.Usuario;
 import com.trokr.repository.ItemRepository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

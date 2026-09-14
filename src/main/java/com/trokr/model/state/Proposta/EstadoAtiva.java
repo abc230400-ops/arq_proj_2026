@@ -13,7 +13,7 @@ public class EstadoAtiva implements EstadoProposta {
     @Override
     public void recuar(Item item) {
 
-        item.mudarEstadoPara(new EstadoRascunho());
+        throw new IllegalStateException("Não permitido");
 
     }
 
@@ -31,14 +31,14 @@ public class EstadoAtiva implements EstadoProposta {
     // }
 
     @Override
-    public void finalizada(Item item) {
+    public void finalizar(Item item) {
 
         throw new IllegalStateException("Não permitido");
     }
 
     @Override
     public void recusar(Item item) {
-
+        
         throw new IllegalStateException("Não permitido");
     }
 

@@ -30,7 +30,7 @@ public class EstadoHomologacao implements EstadoProposta {
     // }
 
     @Override
-    public void finalizada(Item item) {
+    public void finalizar(Item item) {
 
         throw new IllegalStateException("Não permitido");
     }

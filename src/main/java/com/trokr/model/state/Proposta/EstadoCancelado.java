@@ -5,33 +5,33 @@ import com.trokr.model.Item;
 public class EstadoCancelado implements EstadoProposta {
 
     public void avancar(Item item) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'avancar'");
+
+        throw new IllegalStateException("Não permitido");
     }
 
     public void recuar(Item item) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'recuar'");
+
+        throw new IllegalStateException("Não permitido");
     }
 
     public void cancelar(Item item) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cancelar'");
+
+       item.mudarEstadoPara(new EstadoCancelado());
     }
 
-    public void contrapropor(Item item) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contrapropor'");
-    }
+    // public void contrapropor(Item item) {
 
-    public void finalizada(Item item) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'finalizada'");
+    //     throw new UnsupportedOperationException("Unimplemented method 'contrapropor'");
+    // }
+
+    public void finalizar(Item item) {
+
+        throw new IllegalStateException("Não permitido");
     }
 
     public void recusar(Item item) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'recusar'");
+
+        throw new IllegalStateException("Não permitido");
     }
     
 }

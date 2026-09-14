@@ -31,7 +31,7 @@ public class EstadoFinalizado implements EstadoProposta {
     // }
 
     @Override
-    public void finalizada(Item item) {
+    public void finalizar(Item item) {
         
         throw new IllegalStateException("Proposta Finalizada!");
 

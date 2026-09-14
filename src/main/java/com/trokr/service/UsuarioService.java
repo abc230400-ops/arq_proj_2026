@@ -40,8 +40,8 @@ public class UsuarioService {
         usuarioRepository.delete(usuario);
     }
 
-    public List<Usuario> buscarPorNomeOuId(String nome, Long id) {
-        return usuarioRepository.findByNomeOrId(nome, id);
+    public List<Usuario> listarPorNome(String nome) {
+        return usuarioRepository.findByNomeContainingIgnoreCase(nome);
     }
 
     public Usuario buscarPorEmail(String email) {

@@ -15,6 +15,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.trokr.model.state.ContraProposta.EstadoContraProposta;
 import com.trokr.model.state.Proposta.EstadoProposta;
 import com.trokr.model.state.Proposta.EstadoRascunho;
 
@@ -66,6 +68,7 @@ public class Item {
     private LocalDateTime dataCriacao;
 
     private EstadoProposta estadoAtual = new EstadoRascunho();
+    private EstadoContraProposta estadoContra;
 
     public void avancar() {
         estadoAtual.avancar(this);
@@ -75,4 +78,7 @@ public class Item {
         this.estadoAtual = novoEstado;
     }
 
+    public void mudarEstadoPara(EstadoContraProposta novoEstado) {
+        this.estadoContra = novoEstado;
+    }
 }
