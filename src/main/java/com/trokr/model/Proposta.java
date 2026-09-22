@@ -63,7 +63,8 @@ public class Proposta {
 
     @PostLoad
     public void carregarEstado() {
-        if (this.status == null) return;
+        if (this.status == null)
+            return;
 
         if (isContraproposta()) {
             this.estadoContra = carregarEstadoContra();
@@ -83,7 +84,7 @@ public class Proposta {
             case FINALIZADO -> new EstadoFinalizado();
             case CANCELADO -> new EstadoCancelado();
             default -> throw new IllegalStateException(
-                "Status inválido para proposta original: " + status);
+                    "Status inválido para proposta original: " + status);
         };
     }
 
@@ -96,7 +97,7 @@ public class Proposta {
             case FINALIZADO -> new EstadoFinalizadoContra();
             case CANCELADO -> new EstadoCanceladoContra();
             default -> throw new IllegalStateException(
-                "Status inválido para contraproposta: " + status);
+                    "Status inválido para contraproposta: " + status);
         };
     }
 
@@ -125,27 +126,37 @@ public class Proposta {
 
     // --- Delegação (State Pattern) ---
     public void avancar() {
-        if (isContraproposta()) this.estadoContra.avancar(this.item);
-        else this.estadoAtual.avancar(this.item);
+        if (isContraproposta())
+            this.estadoContra.avancar(this.item);
+        else
+            this.estadoAtual.avancar(this.item);
     }
 
     public void recuar() {
-        if (isContraproposta()) this.estadoContra.recuar(this.item);
-        else this.estadoAtual.recuar(this.item);
+        if (isContraproposta())
+            this.estadoContra.recuar(this.item);
+        else
+            this.estadoAtual.recuar(this.item);
     }
 
     public void cancelar() {
-        if (isContraproposta()) this.estadoContra.cancelar(this.item);
-        else this.estadoAtual.cancelar(this.item);
+        if (isContraproposta())
+            this.estadoContra.cancelar(this.item);
+        else
+            this.estadoAtual.cancelar(this.item);
     }
 
     public void finalizar() {
-        if (isContraproposta()) this.estadoContra.finalizar(this.item);
-        else this.estadoAtual.finalizar(this.item);
+        if (isContraproposta())
+            this.estadoContra.finalizar(this.item);
+        else
+            this.estadoAtual.finalizar(this.item);
     }
 
     public void recusar() {
-        if (isContraproposta()) this.estadoContra.recusar(this.item);
-        else this.estadoAtual.recusar(this.item);
+        if (isContraproposta())
+            this.estadoContra.recusar(this.item);
+        else
+            this.estadoAtual.recusar(this.item);
     }
 }

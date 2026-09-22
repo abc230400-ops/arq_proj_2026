@@ -1,6 +1,6 @@
 package com.trokr.model.state.ContraProposta;
 
-import com.trokr.model.Item;
+import com.trokr.model.Proposta;
 
 public interface EstadoContraProposta {
 

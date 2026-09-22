@@ -67,18 +67,18 @@ public class Item {
     @Column(nullable = false, updatable = false)
     private LocalDateTime dataCriacao;
 
-    private EstadoProposta estadoAtual = new EstadoRascunho();
-    private EstadoContraProposta estadoContra;
+    // private EstadoProposta estadoAtual = new EstadoRascunho();
+    // private EstadoContraProposta estadoContra;
 
-    public void avancar() {
-        estadoAtual.avancar(this);
-    }
+    // public void avancar() {
+    //     estadoAtual.avancar(this);
+    // }
 
-    public void mudarEstadoPara(EstadoProposta novoEstado) {
-        this.estadoAtual = novoEstado;
-    }
+    // public void mudarEstadoPara(EstadoProposta novoEstado) {
+    //     this.estadoAtual = novoEstado;
+    // }
 
-    public void mudarEstadoPara(EstadoContraProposta novoEstado) {
-        this.estadoContra = novoEstado;
-    }
+    // public void mudarEstadoPara(EstadoContraProposta novoEstado) {
+    //     this.estadoContra = novoEstado;
+    // }
 }

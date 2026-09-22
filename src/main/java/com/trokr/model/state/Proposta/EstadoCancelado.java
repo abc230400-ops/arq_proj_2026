@@ -16,7 +16,7 @@ public class EstadoCancelado implements EstadoProposta {
 
     public void cancelar(Item item) {
 
-       item.mudarEstadoPara(new EstadoCancelado());
+       Proposta.mudarEstadoPara(new EstadoCancelado());
     }
 
     // public void contrapropor(Item item) {
