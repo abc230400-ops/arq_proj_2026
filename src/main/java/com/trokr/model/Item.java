@@ -16,10 +16,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.trokr.model.state.ContraProposta.EstadoContraProposta;
-import com.trokr.model.state.Proposta.EstadoProposta;
-import com.trokr.model.state.Proposta.EstadoRascunho;
-
 /**
  * Um item ou habilidade oferecido por um usuário para troca.
  *
@@ -42,9 +38,6 @@ public class Item {
     private Long id;
 
     @Column(nullable = false)
-    private String titulo;
-
-    @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)
@@ -52,9 +45,6 @@ public class Item {
 
     @Column(nullable = false)
     private String descricao;
-
-    @Column(nullable = false)
-    private Usuario usuario;
 
     // Relação unidirecional de propósito: Item conhece seu dono, mas Usuario
     // não mantém uma coleção de itens. Evita decisões de cascade/fetch que
@@ -67,18 +57,5 @@ public class Item {
     @Column(nullable = false, updatable = false)
     private LocalDateTime dataCriacao;
 
-    // private EstadoProposta estadoAtual = new EstadoRascunho();
-    // private EstadoContraProposta estadoContra;
-
-    // public void avancar() {
-    //     estadoAtual.avancar(this);
-    // }
-
-    // public void mudarEstadoPara(EstadoProposta novoEstado) {
-    //     this.estadoAtual = novoEstado;
-    // }
-
-    // public void mudarEstadoPara(EstadoContraProposta novoEstado) {
-    //     this.estadoContra = novoEstado;
-    // }
+   
 }

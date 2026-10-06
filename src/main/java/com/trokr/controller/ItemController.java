@@ -41,7 +41,9 @@ public class ItemController {
     @PostMapping
     public ResponseEntity<ItemResponseDTO> criar(@Valid @RequestBody ItemRequestDTO dto) {
         Item item = new Item();
-        item.setTitulo(dto.titulo());
+
+        item.setNome(dto.nome());
+        item.setTipo(dto.tipo());
         item.setDescricao(dto.descricao());
 
         Item salvo = itemService.criar(item, dto.usuarioId());
@@ -51,7 +53,6 @@ public class ItemController {
     @PutMapping("/{id}")
     public ItemResponseDTO atualizar(@PathVariable Long id, @Valid @RequestBody ItemRequestDTO dto) {
         Item dadosAtualizados = new Item();
-        dadosAtualizados.setTitulo(dto.titulo());
         dadosAtualizados.setDescricao(dto.descricao());
 
         return ItemResponseDTO.fromEntity(itemService.atualizar(id, dadosAtualizados, dto.usuarioId()));
@@ -64,24 +65,24 @@ public class ItemController {
     }
 
     @GetMapping("/buscar")
-    public List<ItemResponseDTO> listarPorTitulo(@RequestParam("titulo") String titulo){
-        return itemService.listarPorTitulo(titulo).stream()
+    public List<ItemResponseDTO> listarPorNome(@RequestParam("nome") String nome) {
+        return itemService.listarPorNome(nome).stream()
                 .map(ItemResponseDTO::fromEntity)
                 .toList();
     }
 
     @GetMapping("/buscar-tipo")
-    public List<ItemResponseDTO> listarPorTipo(@RequestParam ("tipo") String tipo){
+    public List<ItemResponseDTO> listarPorTipo(@RequestParam("tipo") String tipo) {
         return itemService.listarPorTipo(tipo).stream()
                 .map(ItemResponseDTO::fromEntity)
                 .toList();
     }
 
     @GetMapping("/buscar-itens-usuario/{id}")
-    public List<ItemResponseDTO> listarPorProprietario(@PathVariable Long id){
+    public List<ItemResponseDTO> listarPorProprietario(@PathVariable Long id) {
         return itemService.listarPorUsuarioProprietario(id).stream()
                 .map(ItemResponseDTO::fromEntity)
                 .toList();
     }
-     
+
 }

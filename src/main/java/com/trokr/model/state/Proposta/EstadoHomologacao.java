@@ -1,42 +1,43 @@
 package com.trokr.model.state.Proposta;
 
-import com.trokr.model.Item;
+import com.trokr.model.Proposta;
+import com.trokr.model.Status;
 
 public class EstadoHomologacao implements EstadoProposta {
 
     @Override
-    public void avancar(Item item) {
+    public void avancar(Proposta proposta) {
 
-        item.mudarEstadoPara(new EstadoAtiva());
+        proposta.mudarEstadoPara(new EstadoAtiva(), Status.ATIVA);
 
     }
 
     @Override
-    public void recuar(Item item) {
+    public void recuar(Proposta proposta) {
 
-        item.mudarEstadoPara(new EstadoRascunho());
+        proposta.mudarEstadoPara(new EstadoRascunho(), Status.RASCUNHO);
     }
 
     @Override
-    public void cancelar(Item item) {
+    public void cancelar(Proposta proposta) {
 
-        item.mudarEstadoPara(new EstadoCancelado());
+        proposta.mudarEstadoPara(new EstadoCancelado(), Status.CANCELADO);
     }
 
     // @Override
-    // public void contrapropor(Item item) {
+    // public void contrapropor(Proposta proposta) {
 
     //     throw new IllegalStateException("Não permitido");
     // }
 
     @Override
-    public void finalizar(Item item) {
+    public void finalizar(Proposta proposta) {
 
         throw new IllegalStateException("Não permitido");
     }
 
     @Override
-    public void recusar(Item item) {
+    public void recusar(Proposta proposta) {
 
         throw new IllegalStateException("Não permitido");
     }

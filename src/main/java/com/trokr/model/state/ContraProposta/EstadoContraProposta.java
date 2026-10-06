@@ -4,14 +4,14 @@ import com.trokr.model.Proposta;
 
 public interface EstadoContraProposta {
 
-    public void avancar(Item item);
+    public void avancar(Proposta proposta);
 
-    public void recuar(Item item);
+    public void recuar(Proposta proposta);
 
-    public void cancelar(Item item);
+    public void cancelar(Proposta proposta);
 
-    public void finalizar(Item item);
+    public void finalizar(Proposta proposta);
 
-    public void recusar(Item item);
+    public void recusar(Proposta proposta);
 
 }

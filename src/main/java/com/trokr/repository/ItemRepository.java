@@ -8,8 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
-    List<Item> findByTituloContainingIgnoreCase(String titulo);
+    List<Item> findByNomeContainingIgnoreCase(String nome);
+
     List<Item> findByTipoIgnoreCase(String tipo);
+
     List<Item> findByUsuarioProprietarioId(Long usuarioId);
- 
+
 }

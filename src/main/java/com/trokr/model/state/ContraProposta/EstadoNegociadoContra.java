@@ -1,32 +1,33 @@
 package com.trokr.model.state.ContraProposta;
 
-import com.trokr.model.Item;
+import com.trokr.model.Proposta;
+import com.trokr.model.Status;
 
 public class EstadoNegociadoContra implements EstadoContraProposta {
 
-    public void avancar(Item item) {
+    public void avancar(Proposta proposta) {
 
-        item.mudarEstadoPara(new EstadoFinalizadoContra());
+        proposta.mudarEstadoPara(new EstadoFinalizadoContra(), Status.FINALIZADO_CONTRA);
     }
 
-    public void recuar(Item item) {
+    public void recuar(Proposta proposta) {
 
         throw new IllegalStateException("Não permitido");
     }
 
-    public void cancelar(Item item) {
-
-       throw new IllegalStateException("Não permitido");
-    }
-
-    public void finalizar(Item item) {
+    public void cancelar(Proposta proposta) {
 
         throw new IllegalStateException("Não permitido");
     }
 
-    public void recusar(Item item) {
+    @Override
+    public void finalizar(Proposta proposta) {
+        proposta.mudarEstadoPara(new EstadoFinalizadoContra(), Status.FINALIZADO_CONTRA);
+    }
 
-        item.mudarEstadoPara(new EstadoRecusado());
+    public void recusar(Proposta proposta) {
+
+        proposta.mudarEstadoPara(new EstadoRecusado(), Status.RECUSADO);
     }
 
 }

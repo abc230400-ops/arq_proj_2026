@@ -11,8 +11,11 @@ import jakarta.validation.constraints.NotNull;
  */
 public record ItemRequestDTO(
 
-        @NotBlank(message = "titulo é obrigatório")
-        String titulo,
+        @NotBlank(message = "nome é obrigatório")
+        String nome,
+
+        @NotBlank(message = "tipo é obrigatório")
+        String tipo,
 
         @NotBlank(message = "descricao é obrigatória")
         String descricao,

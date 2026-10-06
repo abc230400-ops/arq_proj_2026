@@ -1,33 +1,35 @@
 package com.trokr.model.state.ContraProposta;
 
-import com.trokr.model.Item;
+import com.trokr.model.Proposta;
+import com.trokr.model.Status;
 import com.trokr.model.state.Proposta.EstadoRascunho;
 
 public class EstadoEmAnalise implements EstadoContraProposta {
 
-    public void avancar(Item item) {
+    public void avancar(Proposta proposta) {
 
-        item.mudarEstadoPara(new EstadoNegociadoContra());
+        proposta.mudarEstadoPara(new EstadoNegociadoContra(), Status.NEGOCIADO_CONTRA); // certo
+
     }
 
-    public void recuar(Item item) {
+    public void recuar(Proposta proposta) {
 
-        item.mudarEstadoPara(new EstadoRascunho());
+        proposta.mudarEstadoPara(new EstadoRascunho(), Status.RASCUNHO_CONTRA);
     }
 
-    public void cancelar(Item item) {
+    public void cancelar(Proposta proposta) {
 
-        item.mudarEstadoPara(new EstadoCanceladoContra());
+        proposta.mudarEstadoPara(new EstadoCanceladoContra(), Status.CANCELADO_CONTRA);
     }
 
-    public void finalizar(Item item) {
+    public void finalizar(Proposta proposta) {
 
         throw new IllegalStateException("Não permitido");
     }
 
-    public void recusar(Item item) {
+    public void recusar(Proposta proposta) {
 
-        item.mudarEstadoPara(new EstadoRecusado());
+        proposta.mudarEstadoPara(new EstadoRecusado(), Status.RECUSADO);
     }
 
 }

@@ -43,6 +43,7 @@ public class UsuarioController {
         Usuario usuario = new Usuario();
         usuario.setNome(dto.nome());
         usuario.setEmail(dto.email());
+        usuario.setCidade(dto.cidade());
 
         Usuario salvo = usuarioService.criar(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioResponseDTO.fromEntity(salvo));
@@ -53,6 +54,7 @@ public class UsuarioController {
         Usuario dadosAtualizados = new Usuario();
         dadosAtualizados.setNome(dto.nome());
         dadosAtualizados.setEmail(dto.email());
+        dadosAtualizados.setCidade(dto.cidade());
 
         return UsuarioResponseDTO.fromEntity(usuarioService.atualizar(id, dadosAtualizados));
     }

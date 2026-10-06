@@ -1,44 +1,39 @@
 package com.trokr.model.state.Proposta;
 
-import com.trokr.model.Item;
+import com.trokr.model.Proposta;
 
 public class EstadoFinalizado implements EstadoProposta {
 
     @Override
-    public void avancar(Item item) {
+    public void avancar(Proposta proposta) {
         
         throw new IllegalStateException("Não permitido");
 
     }
 
     @Override
-    public void recuar(Item item) {
+    public void recuar(Proposta proposta) {
         
         throw new IllegalStateException("Não permitido");
 
     }
 
     @Override
-    public void cancelar(Item item) {
+    public void cancelar(Proposta proposta) {
         
         throw new IllegalStateException("Não permitido");
     }
 
-    // @Override
-    // public void contrapropor(Item item) {
-    //     // TODO Auto-generated method stub
-    //     throw new UnsupportedOperationException("Unimplemented method 'contrapropor'");
-    // }
 
     @Override
-    public void finalizar(Item item) {
+    public void finalizar(Proposta proposta) {
         
         throw new IllegalStateException("Proposta Finalizada!");
 
     }
 
     @Override
-    public void recusar(Item item) {
+    public void recusar(Proposta proposta) {
         
         throw new IllegalStateException("Não permitido");
     }

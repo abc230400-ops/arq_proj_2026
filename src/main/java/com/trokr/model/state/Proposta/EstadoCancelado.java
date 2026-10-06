@@ -1,35 +1,31 @@
 package com.trokr.model.state.Proposta;
 
-import com.trokr.model.Item;
+import com.trokr.model.Proposta;
+import com.trokr.model.Status;
 
 public class EstadoCancelado implements EstadoProposta {
 
-    public void avancar(Item item) {
+    public void avancar(Proposta proposta) {
 
         throw new IllegalStateException("Não permitido");
     }
 
-    public void recuar(Item item) {
+    public void recuar(Proposta proposta) {
 
         throw new IllegalStateException("Não permitido");
     }
 
-    public void cancelar(Item item) {
+    public void cancelar(Proposta proposta) {
 
-       Proposta.mudarEstadoPara(new EstadoCancelado());
+       proposta.mudarEstadoPara(new EstadoCancelado(), Status.CANCELADO);
     }
 
-    // public void contrapropor(Item item) {
-
-    //     throw new UnsupportedOperationException("Unimplemented method 'contrapropor'");
-    // }
-
-    public void finalizar(Item item) {
+    public void finalizar(Proposta proposta) {
 
         throw new IllegalStateException("Não permitido");
     }
 
-    public void recusar(Item item) {
+    public void recusar(Proposta proposta) {
 
         throw new IllegalStateException("Não permitido");
     }

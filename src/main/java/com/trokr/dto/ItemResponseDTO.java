@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
  */
 public record ItemResponseDTO(
         Long id,
-        String titulo,
+        String nome,
+        String tipo,
         String descricao,
         Long usuarioId,
         String usuarioNome,
@@ -20,7 +21,8 @@ public record ItemResponseDTO(
     public static ItemResponseDTO fromEntity(Item item) {
         return new ItemResponseDTO(
                 item.getId(),
-                item.getTitulo(),
+                item.getNome(),
+                item.getTipo(),
                 item.getDescricao(),
                 item.getUsuarioProprietario().getId(),
                 item.getUsuarioProprietario().getNome(),

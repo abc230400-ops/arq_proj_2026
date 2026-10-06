@@ -1,41 +1,36 @@
 package com.trokr.model.state.Proposta;
 
-import com.trokr.model.Item;
+import com.trokr.model.Proposta;
+import com.trokr.model.Status;
 
 public class EstadoRascunho implements EstadoProposta{
     //implementar as assinaturas na interface
     @Override
-    public void avancar(Item item){
+    public void avancar(Proposta proposta) {
 
-        item.mudarEstadoPara(new EstadoHomologacao());
+        proposta.mudarEstadoPara(new EstadoHomologacao(), Status.HOMOLOGACAO);
     }
 
     @Override
-    public void recuar(Item item) {
+    public void recuar(Proposta proposta) {
         
         throw new IllegalStateException("Não permitido");
     }
 
     @Override
-    public void cancelar(Item item) {
+    public void cancelar(Proposta proposta) {
         
-        item.mudarEstadoPara(new EstadoCancelado());
+        proposta.mudarEstadoPara(new EstadoCancelado(), Status.CANCELADO);
     }
-    
-    // @Override
-    // public void contrapropor(Item item) {
-        
-    //     throw new IllegalStateException("Não permitido");
-    // }
-
+   
     @Override
-    public void finalizar(Item item) {
+    public void finalizar(Proposta proposta) {
         
         throw new IllegalStateException("Não permitido");
     }
 
     @Override
-    public void recusar(Item item) {
+    public void recusar(Proposta proposta) {
         
         throw new IllegalStateException("Não permitido");
     }
