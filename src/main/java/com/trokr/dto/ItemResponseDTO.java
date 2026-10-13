@@ -1,5 +1,6 @@
 package com.trokr.dto;
 
+import com.trokr.model.CategoriaItem;
 import com.trokr.model.Item;
 import java.time.LocalDateTime;
 
@@ -15,8 +16,10 @@ public record ItemResponseDTO(
         String descricao,
         Long usuarioId,
         String usuarioNome,
-        LocalDateTime dataCriacao
-) {
+        LocalDateTime dataCriacao,
+        CategoriaItem categoria
+
+    ) {
 
     public static ItemResponseDTO fromEntity(Item item) {
         return new ItemResponseDTO(
@@ -26,7 +29,9 @@ public record ItemResponseDTO(
                 item.getDescricao(),
                 item.getUsuarioProprietario().getId(),
                 item.getUsuarioProprietario().getNome(),
-                item.getDataCriacao()
+                item.getDataCriacao(),
+                item.getCategoria()
+                
         );
     }
 }

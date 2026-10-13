@@ -17,13 +17,19 @@ public class Avaliacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private Integer nota;
 
-    @Column(nullable = false)
     private LocalDateTime data;
 
     private String descricao;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private StatusAvaliacao status = StatusAvaliacao.PENDENTE;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "proposta_id", nullable = false)
+    private Proposta proposta;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_dono_id", nullable = false)
@@ -33,7 +39,13 @@ public class Avaliacao {
     @JoinColumn(name = "usuario_interessado_id", nullable = false)
     private Usuario usuarioInteressado;
 
-    public void registrarAvaliacao() {
+    public void registrarAvaliacao(Integer nota, String descricao) {
+        if (this.status == StatusAvaliacao.AVALIADA) {
+            throw new IllegalStateException("Essa avaliação já foi feita");
+        }
+        this.nota = nota;
+        this.descricao = descricao;
         this.data = LocalDateTime.now();
+        this.status = StatusAvaliacao.AVALIADA;
     }
 }

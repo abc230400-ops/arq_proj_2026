@@ -1,5 +1,7 @@
 package com.trokr.dto;
 
+import com.trokr.model.CategoriaItem;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,16 +13,14 @@ import jakarta.validation.constraints.NotNull;
  */
 public record ItemRequestDTO(
 
-        @NotBlank(message = "nome é obrigatório")
-        String nome,
+                @NotBlank(message = "nome é obrigatório") String nome,
 
-        @NotBlank(message = "tipo é obrigatório")
-        String tipo,
+                @NotBlank(message = "tipo é obrigatório") String tipo,
 
-        @NotBlank(message = "descricao é obrigatória")
-        String descricao,
+                @NotBlank(message = "descricao é obrigatória") String descricao,
 
-        @NotNull(message = "usuarioId é obrigatório")
-        Long usuarioId
-) {
+                @NotNull(message = "usuarioId é obrigatório") Long usuarioId,
+
+                @NotNull(message = "categoria é obrigatória") CategoriaItem categoria
+        ) {
 }

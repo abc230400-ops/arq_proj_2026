@@ -43,4 +43,14 @@ public class Usuario {
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime dataCriacao;
+
+    private Integer saldoCreditos = 0;
+
+    public void adicionarCreditos(int valor) {
+        if (this.saldoCreditos == null) {
+            this.saldoCreditos = 0;
+        }
+        this.saldoCreditos = this.saldoCreditos + valor;
+    }
+
 }

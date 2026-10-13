@@ -35,6 +35,9 @@ public class ItemService {
         Item itemExistente = buscarPorId(id);
         Usuario dono = usuarioService.buscarPorId(usuarioId);
         itemExistente.setDescricao(dadosAtualizados.getDescricao());
+        itemExistente.setNome(dadosAtualizados.getNome());
+        itemExistente.setTipo(dadosAtualizados.getTipo());
+        itemExistente.setCategoria(dadosAtualizados.getCategoria());
         itemExistente.setUsuarioProprietario(dono);
         return itemRepository.save(itemExistente);
     }
@@ -44,12 +47,14 @@ public class ItemService {
         itemRepository.delete(item);
     }
 
-   public List<Item> listarPorNome(String nome) {
-    return itemRepository.findByNomeContainingIgnoreCase(nome);
-}
+    public List<Item> listarPorNome(String nome) {
+        return itemRepository.findByNomeContainingIgnoreCase(nome);
+    }
+
     public List<Item> listarPorTipo(String tipo) {
         return itemRepository.findByTipoIgnoreCase(tipo);
     }
+
     public List<Item> listarPorUsuarioProprietario(Long usuarioId) {
         return itemRepository.findByUsuarioProprietarioId(usuarioId);
     }

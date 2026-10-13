@@ -42,10 +42,11 @@ public class ItemController {
     public ResponseEntity<ItemResponseDTO> criar(@Valid @RequestBody ItemRequestDTO dto) {
         Item item = new Item();
 
+        item.setCategoria(dto.categoria());
         item.setNome(dto.nome());
         item.setTipo(dto.tipo());
         item.setDescricao(dto.descricao());
-
+        
         Item salvo = itemService.criar(item, dto.usuarioId());
         return ResponseEntity.status(HttpStatus.CREATED).body(ItemResponseDTO.fromEntity(salvo));
     }
@@ -54,6 +55,9 @@ public class ItemController {
     public ItemResponseDTO atualizar(@PathVariable Long id, @Valid @RequestBody ItemRequestDTO dto) {
         Item dadosAtualizados = new Item();
         dadosAtualizados.setDescricao(dto.descricao());
+        dadosAtualizados.setNome(dto.nome());
+        dadosAtualizados.setTipo(dto.tipo());
+        dadosAtualizados.setCategoria(dto.categoria());
 
         return ItemResponseDTO.fromEntity(itemService.atualizar(id, dadosAtualizados, dto.usuarioId()));
     }

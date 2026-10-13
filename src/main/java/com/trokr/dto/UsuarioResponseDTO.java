@@ -9,17 +9,22 @@ import java.time.LocalDateTime;
  * o formato de entrada/saída evoluir sem quebrar o modelo de dados.
  */
 public record UsuarioResponseDTO(
+        
         Long id,
         String nome,
         String email,
+        String cidade,
+        Integer saldoCreditos,
         LocalDateTime dataCriacao
 ) {
 
     public static UsuarioResponseDTO fromEntity(Usuario usuario) {
         return new UsuarioResponseDTO(
-                usuario.getId(),
+                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),
+                usuario.getCidade(),
+                usuario.getSaldoCreditos(),
                 usuario.getDataCriacao()
         );
     }

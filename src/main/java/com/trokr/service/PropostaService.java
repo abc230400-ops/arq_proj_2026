@@ -8,9 +8,14 @@ import com.trokr.model.Usuario;
 import com.trokr.model.state.ContraProposta.EstadoRascunhoContra;
 import com.trokr.repository.PropostaRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import com.trokr.event.TrocaConcluidaEvent;
+
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +24,7 @@ public class PropostaService {
     private final PropostaRepository propostaRepository;
     private final ItemService itemService;
     private final UsuarioService usuarioService;
+    private final ApplicationEventPublisher eventPublisher;
 
     public List<Proposta> listarTodas() {
         return propostaRepository.findAll();
@@ -66,6 +72,7 @@ public class PropostaService {
         return propostaRepository.save(proposta);
     }
 
+    
     public Proposta finalizar(Long id) {
         Proposta proposta = buscarPorId(id);
         proposta.finalizar();
@@ -73,6 +80,13 @@ public class PropostaService {
 
         if (proposta.isContraproposta()) {
             recusarConcorrentes(proposta);
+
+            eventPublisher.publishEvent(new TrocaConcluidaEvent(
+                    proposta.getId(),
+                    proposta.getItem().getId(),
+                    proposta.getPropostaAnterior().getUsuario().getId(),
+                    proposta.getUsuario().getId(),
+                    LocalDateTime.now()));
         }
 
         return salva;
